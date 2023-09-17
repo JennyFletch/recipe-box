@@ -35,5 +35,5 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/ingredients', 'App\Http\Controllers\IngredientController@index')->name('ingredients');
-Route::get('/recipes', 'App\Http\Controllers\RecipeController@index')->name('recipes');
+Route::get('/ingredients', 'App\Http\Controllers\IngredientController@index')->middleware(['auth', 'verified'])->name('ingredients');
+Route::get('/recipes', 'App\Http\Controllers\RecipeController@index')->middleware(['auth', 'verified'])->name('recipes');
