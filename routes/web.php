@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+}); 
+
+Route::get('/ingredients', 'App\Http\Controllers\IngredientController@index')->name('ingredients');
+Route::get('/recipes', 'App\Http\Controllers\RecipeController@getRecipe')->name('recipes');
