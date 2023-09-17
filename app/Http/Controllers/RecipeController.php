@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
-    public function getRecipe() {
+    public function index() {
 
-        return view('recipes');
+        return view('recipes/index');
     }
 }

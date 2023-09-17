@@ -9,6 +9,11 @@
     </head>
     <body>
 
+        <ul class="header-nav">
+            <li><a href="/login">login</a></li>
+            <li><a href="/register">register</a></li>
+        </ul>
+
         <h1>Recipe Box <span>All the convenience of a countertop recipe box, minus the crumbs and splats.</span></h1>
 
         <ul class="navbar">
