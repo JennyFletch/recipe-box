@@ -10,7 +10,7 @@
 
         <ul>
 
-                @foreach( $recipes as $recipe)
+                @foreach( $recipes->reverse() as $recipe )
 
                 <li>
                         <h3>{{ $recipe->title }}<h3>
