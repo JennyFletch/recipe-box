@@ -8,7 +8,7 @@
 
     <ul>
 
-        @foreach( $ingredients as $ingredient)
+        @foreach( $ingredients->sortBy('name') as $ingredient)
 
             <li>{{ $ingredient->name }}</li>
 
