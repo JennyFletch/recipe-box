@@ -4,6 +4,10 @@
 
         <h1>Recipes</h1>
 
+        <div class="p-4">
+                <a href="/recipes/new">Add New</a>
+        </div>
+
         <ul>
 
                 @foreach( $recipes as $recipe)

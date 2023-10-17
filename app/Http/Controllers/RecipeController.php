@@ -25,7 +25,7 @@ class RecipeController extends Controller
         $data = [];
 
         $data['ingredients'] = $this->ingredient->all();
-        return view('recipes/new');
+        return view('recipes/new', $data);
     }
 
     public function saveRecipe( Request $request, Recipe $recipe ) {
@@ -40,6 +40,9 @@ class RecipeController extends Controller
 
         if( $request->isMethod('post') ) {
             $recipe->insert($data);
+
+            $data['recipes'] = $this->recipe->all();
+            
             return view('recipes/index', $data);
         }
     }
