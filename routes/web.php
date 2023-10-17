@@ -36,4 +36,8 @@ Route::get('/', function () {
 });
 
 Route::get('/ingredients', 'App\Http\Controllers\IngredientController@index')->middleware(['auth', 'verified'])->name('ingredients');
+
+// Recipes
 Route::get('/recipes', 'App\Http\Controllers\RecipeController@index')->middleware(['auth', 'verified'])->name('recipes');
+Route::get('/recipes/new', 'App\Http\Controllers\RecipeController@recipeform')->middleware(['auth', 'verified'])->name('add_recipe');
+Route::post('/recipes/new', 'App\Http\Controllers\RecipeController@saveRecipe')->middleware(['auth', 'verified'])->name('save_recipe');

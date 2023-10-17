@@ -1,0 +1,40 @@
+@extends('layouts.app')
+
+@section('content')
+
+<h1>Add a Recipe</h1>
+<p>Use the form below to create a new recipe.</p>
+
+<div class="form-outer">
+    <form action="{{ route('save_recipe') }}" method="post">
+        {{ csrf_field() }}
+        <div class="form-row">
+            <input type="text" name="title" class="form-input" placeholder="Recipe Title" />
+        </div>
+
+        <h3>INGREDIENTS</h3>
+
+        <div class="form-row recipe-bar flex flex-row justify-between">
+            <input type="text" name="amount1" class="form-input" placeholder="amount" />
+            <input type="text" name="measure1" class="form-input" placeholder="measurement" />
+            <select name="ingredient1" class="form-select">
+                @foreach( $ingredients as $ingredient)
+                    <option>{{ $ingredient->name }}</option>
+                @endforeach
+            </select>
+            <input type="button" class="btn btn-control" value="+" />
+        </div>
+
+        <div class="form-row recipe-bar">
+            <h3>INSTRUCTIONS</h3>
+            <textarea name="instructions" rows="4" class="block p-3 w-full"></textarea>
+        </div>
+        
+        <div class="form-row">
+            <input type="submit" class="btn btn-primary" value="SUBMIT" />
+        </div>
+
+    </form>
+</div>
+
+@endsection
