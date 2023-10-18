@@ -14,6 +14,10 @@
         <div class="form-row">
             <input type="file" name="image_upload" />
         </div>
+        <div class="form-row">
+            <label for="short_description">Short Description:</label>
+            <textarea name="short_description" rows="2" class="block p-3 w-full"></textarea>
+        </div>
 
         <h3>INGREDIENTS</h3>
 
@@ -28,7 +32,7 @@
             <input type="button" class="btn btn-control" value="+" />
         </div>
 
-        <div class="form-row recipe-bar">
+        <div class="form-row">
             <h3>INSTRUCTIONS</h3>
             <textarea name="instructions" rows="4" class="block p-3 w-full"></textarea>
         </div>

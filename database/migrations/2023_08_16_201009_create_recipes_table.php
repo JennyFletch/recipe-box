@@ -15,6 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('image_url');
+            $table->string('short_description');
             $table->string('instructions');
             $table->string('category');
             $table->string('diet');

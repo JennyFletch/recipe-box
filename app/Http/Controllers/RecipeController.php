@@ -47,6 +47,7 @@ class RecipeController extends Controller
             $request->file('image_upload')->move('images', $image_name);
         }
         
+        $data['short_description'] = $request->input('short_description');
         $data['category'] = 'drinks';
         $data['diet'] = 'none';
         $data['tool'] = 'none';
