@@ -33,7 +33,20 @@ class RecipeController extends Controller
 
         $data['title'] = $request->input('title');
         $data['instructions'] = $request->input('instructions');
-        $data['image_url'] = 'placeholder.jpg';
+
+        if(!($request->hasFile('image_upload'))) {
+            echo "<script type='text/javascript'>console.log('none');</script>";
+            $data['image_url'] = "none";
+        } else {
+            echo "<script type='text/javascript'>console.log('image upload attempted');</script>";
+            
+            $image = $request->file('image_upload');
+            $image_name = time().'.'.$image->getClientOriginalExtension();
+
+            $data['image_url'] = $image_name;
+            $request->file('image_upload')->move('images', $image_name);
+        }
+        
         $data['category'] = 'drinks';
         $data['diet'] = 'none';
         $data['tool'] = 'none';
@@ -42,7 +55,7 @@ class RecipeController extends Controller
             $recipe->insert($data);
 
             $data['recipes'] = $this->recipe->all();
-            
+
             return view('recipes/index', $data);
         }
     }

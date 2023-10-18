@@ -12,3 +12,9 @@ form .form-select, .form-input { width:100%; margin-bottom:12px; }
 form .recipe-bar .form-select, .recipe-bar .form-input { width:30%; }
 form .btn-control { padding:0 .75rem; height:42px; line-height:42px; text-align:center; font-size:2rem; background-color:#cc0000; color:#fff; border-radius:4px; transition:all 0.3s ease; }
 form .btn-control:hover { background-color:#ee0000; }
+
+ul.recipe-list { margin:0; padding:none; list-style:none; }
+ul.recipe-list li { background-color:#fff; padding:20px 25px; margin:0 0 25px 0; }
+ul.recipe-list li .feat-image { margin-right:25px; }
+ul.recipe-list li .feat-image img { width:225px; max-width:100%; height:auto; }
+ul.recipe-list li .recipe-instructions { font-size:.9rem; }

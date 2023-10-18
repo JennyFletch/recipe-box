@@ -6,10 +6,13 @@
 <p>Use the form below to create a new recipe.</p>
 
 <div class="form-outer">
-    <form action="{{ route('save_recipe') }}" method="post">
+    <form action="{{ route('save_recipe') }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-row">
             <input type="text" name="title" class="form-input" placeholder="Recipe Title" />
+        </div>
+        <div class="form-row">
+            <input type="file" name="image_upload" />
         </div>
 
         <h3>INGREDIENTS</h3>
