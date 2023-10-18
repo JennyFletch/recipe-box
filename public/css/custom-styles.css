@@ -17,4 +17,4 @@ ul.recipe-list { margin:0; padding:none; list-style:none; }
 ul.recipe-list li { background-color:#fff; padding:20px 25px; margin:0 0 25px 0; }
 ul.recipe-list li .feat-image { margin-right:25px; }
 ul.recipe-list li .feat-image img { width:225px; max-width:100%; height:auto; }
-ul.recipe-list li .recipe-instructions { font-size:.9rem; }
+ul.recipe-list li .recipe-desc { font-size:.9rem; }

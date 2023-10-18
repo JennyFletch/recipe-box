@@ -20,7 +20,7 @@
                         @endif
                         <div class="feat-info">
                                 <h3>{{ $recipe->title }}<h3>
-                                <div class="recipe-instructions">{{ $recipe->instructions }}</div>
+                                <div class="recipe-desc">{{ $recipe->short_description }}</div>
                         </div>
                 </li>
 
