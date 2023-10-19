@@ -48,9 +48,9 @@ class RecipeController extends Controller
         }
         
         $data['short_description'] = $request->input('short_description');
-        $data['category'] = 'drinks';
-        $data['diet'] = 'none';
-        $data['tool'] = 'none';
+        $data['category'] = $request->input('category');
+        $data['diet'] = $request->input('diet');
+        $data['tool'] = $request->input('tool');
 
         if( $request->isMethod('post') ) {
             $recipe->insert($data);
@@ -58,6 +58,7 @@ class RecipeController extends Controller
             $data['recipes'] = $this->recipe->all();
 
             return view('recipes/index', $data);
+            // return redirect('/recipes', $data);
         }
     }
 }

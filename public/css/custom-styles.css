@@ -6,12 +6,15 @@ h3 { font-weight:bold; margin-bottom:12px; font-size:1.25rem; }
 
 ul { list-style:disc; margin-left:25px; }
 
+.smalltxt { font-size:.75rem; }
+
 form { padding-top:32px; }
 form .form-select { padding-left:.75rem; padding-right:.75rem; }
 form .form-select, .form-input { width:100%; margin-bottom:12px; }
 form .recipe-bar .form-select, .recipe-bar .form-input { width:30%; }
 form .btn-control { padding:0 .75rem; height:42px; line-height:42px; text-align:center; font-size:2rem; background-color:#cc0000; color:#fff; border-radius:4px; transition:all 0.3s ease; }
 form .btn-control:hover { background-color:#ee0000; }
+form .category-row-item select { padding-top:.5rem; padding-bottom:.5rem; }
 
 ul.recipe-list { margin:0; padding:none; list-style:none; }
 ul.recipe-list li { background-color:#fff; padding:20px 25px; margin:0 0 25px 0; }

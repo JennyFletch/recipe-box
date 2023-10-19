@@ -21,6 +21,19 @@
                         <div class="feat-info">
                                 <h3>{{ $recipe->title }}<h3>
                                 <div class="recipe-desc">{{ $recipe->short_description }}</div>
+                                <div class="pt-4">
+                                        <p class="smalltxt">Filed under: 
+                                                @if( ($recipe->category !== 'none of these') && ($recipe->category !== '- select one -') )
+                                                        {{ $recipe->category }} 
+                                                @endif
+                                                @if( ($recipe->diet !== 'none of these') && ($recipe->diet !== '- select one -') )
+                                                        {{ $recipe->diet }} 
+                                                @endif
+                                                @if( ($recipe->tool !== 'none of these') && ($recipe->tool !== '- select one -') )
+                                                        {{ $recipe->tool }} 
+                                                @endif
+                                        </p>
+                                </div>
                         </div>
                 </li>
 
