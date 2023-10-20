@@ -23,6 +23,14 @@ class RecipeController extends Controller
         return view('recipes/index', $data);
     }
 
+    public function show($recipe_id, Recipe $recipe, Request $request) {
+        $data = [];
+        echo "<script type='text/javascript'>console.log('recipe id: " . $recipe_id . "');</script>";
+        $data['singlerecipe'] = Recipe::find($recipe_id);
+
+        return view('recipes/single', $data);
+    }
+
     public function recipeform() {
         $data = [];
 

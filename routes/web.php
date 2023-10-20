@@ -42,3 +42,4 @@ Route::get('/ingredients', 'App\Http\Controllers\IngredientController@index')->m
 Route::get('/recipes', 'App\Http\Controllers\RecipeController@index')->middleware(['auth', 'verified'])->name('recipes');
 Route::get('/recipes/new', 'App\Http\Controllers\RecipeController@recipeform')->middleware(['auth', 'verified'])->name('add_recipe');
 Route::post('/recipes/new', 'App\Http\Controllers\RecipeController@saveRecipe')->middleware(['auth', 'verified'])->name('save_recipe');
+Route::get('/recipes/{recipe_id}', 'App\Http\Controllers\RecipeController@show')->middleware(['auth', 'verified'])->name('show_recipe');

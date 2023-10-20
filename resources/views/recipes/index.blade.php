@@ -19,7 +19,7 @@
                                 </div>
                         @endif
                         <div class="feat-info">
-                                <h3>{{ $recipe->title }}<h3>
+                                <h3><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a><h3>
                                 <div class="recipe-desc">{{ $recipe->short_description }}</div>
                                 <div class="pt-4">
                                         <p class="smalltxt">Filed under: 
