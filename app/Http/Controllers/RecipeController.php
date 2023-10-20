@@ -55,8 +55,10 @@ class RecipeController extends Controller
         $data['diet'] = $request->input('diet');
         $data['tool'] = $request->input('tool');
 
-        $datalink['ingredient_id'] = 2;
-        // $datalink['recipe_id'] = 1;
+        $ingred= DB::table('ingredients')->where('name',  $request->input('ingredient1') )->first();
+        // $datalink['ingredient_id'] = 2;
+        $datalink['ingredient_id'] = $ingred->id;
+
         $datalink['amount'] = $request->input('amount1');
 
         if( $request->isMethod('post') ) {
