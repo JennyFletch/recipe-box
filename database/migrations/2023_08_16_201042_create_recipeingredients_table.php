@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('ingredient_id')->references('id')->on('ingredients');
             $table->integer('recipe_id')->unsigned();
             $table->foreign('recipe_id')->references('id')->on('recipes');
-            $table->string('amount')->unique();
+            $table->string('amount');
             $table->timestamps();
         });
     }

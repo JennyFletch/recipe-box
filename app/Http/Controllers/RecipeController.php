@@ -7,6 +7,7 @@ use App\Models\Ingredient as Ingredient;
 use App\Models\Recipeingredient as Recipeingredient;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RecipeController extends Controller
 {
@@ -55,14 +56,15 @@ class RecipeController extends Controller
         $data['tool'] = $request->input('tool');
 
         $datalink['ingredient_id'] = 2;
-        $datalink['recipe_id'] = 1;
+        // $datalink['recipe_id'] = 1;
         $datalink['amount'] = $request->input('amount1');
 
         if( $request->isMethod('post') ) {
             
-            $recipe->insert($data);
+            $recipe_id = $recipe->insertGetId($data);
             $data['recipes'] = $this->recipe->all();
 
+            $datalink['recipe_id'] = $recipe_id;
             $recipeingredient->insert($datalink);
             // $datalink['recipeingredients'] = $this->recipeingredient->all();
 
