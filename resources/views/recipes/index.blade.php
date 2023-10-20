@@ -8,11 +8,11 @@
                 <a href="/recipes/new">Add New</a>
         </div>
 
-        <ul class="recipe-list">
+        <div class="recipe-list">
 
                 @foreach( $recipes->reverse() as $recipe )
 
-                <li class="flex flex-row">
+                <div class="recipe-card">
                         @if( !($recipe->image_url === 'none') ) 
                                 <div class="feat-image">
                                         <img src="{{ asset('/images/'.$recipe->image_url) }}" alt="{{ $recipe->title }}" />
@@ -35,7 +35,7 @@
                                         </p>
                                 </div>
                         </div>
-                </li>
+                </div>
 
                 @endforeach
 
