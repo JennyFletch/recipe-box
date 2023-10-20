@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe as Recipe;
 use App\Models\Ingredient as Ingredient;
+use App\Models\Recipeingredient as Recipeingredient;
 
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
-    public function __construct( Ingredient $ingredient, Recipe $recipe ) {
+    public function __construct( Ingredient $ingredient, Recipe $recipe, Recipeingredient $recipeingredient ) {
         $this->ingredient = $ingredient;
         $this->recipe = $recipe;
     }
@@ -28,8 +29,9 @@ class RecipeController extends Controller
         return view('recipes/new', $data);
     }
 
-    public function saveRecipe( Request $request, Recipe $recipe ) {
+    public function saveRecipe( Request $request, Recipe $recipe, Recipeingredient $recipeingredient ) {
         $data = [];
+        $datalink = [];
 
         $data['title'] = $request->input('title');
         $data['instructions'] = $request->input('instructions');
@@ -52,13 +54,22 @@ class RecipeController extends Controller
         $data['diet'] = $request->input('diet');
         $data['tool'] = $request->input('tool');
 
-        if( $request->isMethod('post') ) {
-            $recipe->insert($data);
+        $datalink['ingredient_id'] = 2;
+        $datalink['recipe_id'] = 1;
+        $datalink['amount'] = $request->input('amount1');
 
+        if( $request->isMethod('post') ) {
+            
+            $recipe->insert($data);
             $data['recipes'] = $this->recipe->all();
 
-            return view('recipes/index', $data);
+            $recipeingredient->insert($datalink);
+            // $datalink['recipeingredients'] = $this->recipeingredient->all();
+
+            // return view('recipes/index', $data);
             // return redirect('/recipes', $data);
         }
+
+        return view('recipes/index', $data);
     }
 }

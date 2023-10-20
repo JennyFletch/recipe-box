@@ -15,12 +15,9 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('ingredient_id')->unsigned();
             $table->foreign('ingredient_id')->references('id')->on('ingredients');
-            $table->integer('measurement_id')->unsigned();
-            $table->foreign('measurement_id')->references('id')->on('measurements');
             $table->integer('recipe_id')->unsigned();
             $table->foreign('recipe_id')->references('id')->on('recipes');
-            $table->integer('amount')->unsigned();
-            $table->integer('sort_position')->unsigned();
+            $table->string('amount')->unique();
             $table->timestamps();
         });
     }
