@@ -2,15 +2,16 @@
 
 @section('content')
 
-        <h1>Recipes 
-                @if( $filter !== 'none' ) 
-                        : {{ $filter }}
-                @endif
-        </h1>
+        <div class="page-header flex flex-row justify-between items-center">
 
-        <div class="p-4">
-                <a href="/recipes/new">Add New</a>
+                <h1>Recipes 
+                        @if( $filter !== 'none' ) 
+                                : {{ $filter }}
+                        @endif
+                </h1>
+                <div><a href="/recipes/new" class="btn btn-lg">Add New</a></div>
         </div>
+        
 
         <div class="recipe-list">
 
@@ -26,7 +27,7 @@
                                         <h3><a href="/recipes/{{ $recipe->id }}">{{ $recipe->title }}</a><h3>
                                         <div class="recipe-desc">{{ $recipe->short_description }}</div>
                                         <div class="pt-4">
-                                                <p class="smalltxt">Filed under: 
+                                                <p class="smalltxt">Filed under: <br />
                                                         @if( ($recipe->category !== 'none of these') && ($recipe->category !== '- select one -') )
                                                                 <a href="/recipes/filtered/{{ $recipe->category }}" class="cat-button">{{ $recipe->category }}</a>
                                                         @endif
