@@ -43,3 +43,4 @@ Route::get('/recipes', 'App\Http\Controllers\RecipeController@index')->middlewar
 Route::get('/recipes/new', 'App\Http\Controllers\RecipeController@recipeform')->middleware(['auth', 'verified'])->name('add_recipe');
 Route::post('/recipes/new', 'App\Http\Controllers\RecipeController@saveRecipe')->middleware(['auth', 'verified'])->name('save_recipe');
 Route::get('/recipes/{recipe_id}', 'App\Http\Controllers\RecipeController@show')->middleware(['auth', 'verified'])->name('show_recipe');
+Route::get('/recipes/filtered/{filter}', 'App\Http\Controllers\RecipeController@filter')->middleware(['auth', 'verified'])->name('list_filtered');

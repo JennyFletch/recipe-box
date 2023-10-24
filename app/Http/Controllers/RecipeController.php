@@ -19,7 +19,30 @@ class RecipeController extends Controller
     public function index() {
         $data = [];
 
+        $data['filter'] = 'none';
         $data['recipes'] = $this->recipe->all();
+        return view('recipes/index', $data);
+    }
+
+    public function filter($filter) {
+        $data = [];
+        $cat_list = [];
+
+        // $data['recipes'] = $this->recipe->all();
+
+        // Change this to find recipe by category
+        // $ingred= DB::table('ingredients')->where('name',  $request->input('ingredient1') )->first();
+        // $data['ingredient_id'] = $ingred->id;
+
+        $cat_list = DB::table('recipes')
+                        ->where('category',  $filter )
+                        ->orWhere('diet',  $filter )
+                        ->orWhere('tool',  $filter )
+                        ->get();
+        $data['recipes'] = $cat_list;
+
+        $data['filter'] = $filter;
+
         return view('recipes/index', $data);
     }
 
@@ -64,7 +87,6 @@ class RecipeController extends Controller
         $data['tool'] = $request->input('tool');
 
         $ingred= DB::table('ingredients')->where('name',  $request->input('ingredient1') )->first();
-        // $datalink['ingredient_id'] = 2;
         $datalink['ingredient_id'] = $ingred->id;
 
         $datalink['amount'] = $request->input('amount1');
