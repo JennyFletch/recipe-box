@@ -46,10 +46,18 @@ class RecipeController extends Controller
         return view('recipes/index', $data);
     }
 
-    public function show($recipe_id, Recipe $recipe, Request $request) {
+    public function show($recipe_id, Recipe $recipe, RecipeIngredient $recipeingredient, Ingredient $ingredient, Request $request) {
         $data = [];
-        echo "<script type='text/javascript'>console.log('recipe id: " . $recipe_id . "');</script>";
         $data['singlerecipe'] = Recipe::find($recipe_id);
+        
+        /* $data['ingredients'] = RecipeIngredient::all()
+                ->join('ingredients', 'ingredient.id', '=', 'recipeingredients.ingredient_id')
+                ->where('recipe_id', $recipe_id);  */
+
+        $data['ingredients'] = DB::table('recipeingredients')
+                ->where('recipe_id', '=', $recipe_id)
+                ->join('ingredients', 'ingredients.id', '=', 'recipeingredients.ingredient_id')
+                ->get();
 
         return view('recipes/single', $data);
     }
@@ -95,13 +103,10 @@ class RecipeController extends Controller
             
             $recipe_id = $recipe->insertGetId($data);
             $data['recipes'] = $this->recipe->all();
+            $data['filter'] = 'none';
 
             $datalink['recipe_id'] = $recipe_id;
             $recipeingredient->insert($datalink);
-            // $datalink['recipeingredients'] = $this->recipeingredient->all();
-
-            // return view('recipes/index', $data);
-            // return redirect('/recipes', $data);
         }
 
         return view('recipes/index', $data);

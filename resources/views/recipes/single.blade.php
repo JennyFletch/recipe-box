@@ -27,7 +27,11 @@
         <div class="singlerecipe-body">
             <div class="singlerecipe-ingred">
                 <h3>INGREDIENTS</h3>
-                <p>~ Do a join to get ingredients! ~</p>
+                
+                @foreach( $ingredients as $ingredient )
+                    <div class="single-ingred">{{ $ingredient->amount }} {{$ingredient->name}}</div>
+                @endforeach
+
             </div>
             <div class="singlerecipe-instr">
                 <h3>INSTRUCTIONS</h3>
