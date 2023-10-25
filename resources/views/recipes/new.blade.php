@@ -56,6 +56,7 @@
         <h3>INGREDIENTS</h3>
 
         <div id="ingredients-outer">
+
             <div id="ingred1" class="form-row recipe-bar flex flex-row items-start">
                 <input type="text" name="amount[]" class="form-input" placeholder="amount (ex. 2 Tbsp)" />
                 <select name="ingredient[]" class="form-select ml-4">
@@ -63,13 +64,19 @@
                         <option>{{ $ingredient->name }}</option>
                     @endforeach
                 </select>
-                <input type="button" class="add-ingredients btn btn-control ml-4" value="+" />
+                <p><input type="button" class="add-ingredients btn btn-control ml-4" value="+" />
             </div>
+
+            <p>
+                Not finding what you need? <br />
+                <span class="smalltxt"><a href="#" class="add-new-ingredient">add an ingredient</a></span>
+            </p>
+
         </div>
 
         <h3>COOKING INSTRUCTIONS</h3>
         <div class="form-row">
-            <textarea name="instructions" rows="5" class="block px-4 py-2 w-full"></textarea>
+            <textarea name="instructions" rows="6" class="block px-4 py-2 w-full"></textarea>
         </div>
         
         <div class="form-row py-4">

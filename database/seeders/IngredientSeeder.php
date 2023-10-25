@@ -14,19 +14,18 @@ class IngredientSeeder extends Seeder
     public function run(): void
     {
         DB::table('ingredients')->insert(
-            [
-                'name' => 'salt'
-            ]
-        );
-        DB::table('ingredients')->insert(
-            [
-                'name' => 'pepper'
-            ]
-        );
-        DB::table('ingredients')->insert(
-            [
-                'name' => 'cheddar cheese'
-            ]
+            [ 'name' => 'salt' ],
+            [ 'name' => 'pepper' ],
+            [ 'name' => 'cheese - cheddar' ],
+            [ 'name' => 'cheese - provolone' ],
+            [ 'name' => 'chicken thighs - boneless' ],
+            [ 'name' => 'chicken thights - bone-in' ],
+            [ 'name' => 'beef - steak' ],
+            [ 'name' => 'beef - chuck roast' ],
+            [ 'name' => 'pasta - spaghetti' ],
+            [ 'name' => 'pasta - penne' ],
+            [ 'name' => 'apple(s)' ],
+            [ 'name' => 'orange(s)' ],
         );
     }
 }
