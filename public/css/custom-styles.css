@@ -40,6 +40,8 @@ form .category-row-item select { padding-top:.5rem; padding-bottom:.5rem; }
 .singlerecipe-outer .singlerecipe-instr { padding-bottom:35px; }
 
 #ingredients-outer { padding-bottom:25px; }
+#ingredients-outer .spacer1 { margin-right:12px; }
+#ingredients-outer .spacer2 { margin-right:9px; }
 a.add-new-ingredient { text-decoration:underline; color:#cc0000; font-weight:600; }
 a.add-new-ingredient:hover { text-decoration:none; }
 
