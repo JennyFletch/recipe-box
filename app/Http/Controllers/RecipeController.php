@@ -28,12 +28,6 @@ class RecipeController extends Controller
         $data = [];
         $cat_list = [];
 
-        // $data['recipes'] = $this->recipe->all();
-
-        // Change this to find recipe by category
-        // $ingred= DB::table('ingredients')->where('name',  $request->input('ingredient1') )->first();
-        // $data['ingredient_id'] = $ingred->id;
-
         $cat_list = DB::table('recipes')
                         ->where('category',  $filter )
                         ->orWhere('diet',  $filter )
@@ -49,10 +43,6 @@ class RecipeController extends Controller
     public function show($recipe_id, Recipe $recipe, RecipeIngredient $recipeingredient, Ingredient $ingredient, Request $request) {
         $data = [];
         $data['singlerecipe'] = Recipe::find($recipe_id);
-        
-        /* $data['ingredients'] = RecipeIngredient::all()
-                ->join('ingredients', 'ingredient.id', '=', 'recipeingredients.ingredient_id')
-                ->where('recipe_id', $recipe_id);  */
 
         $data['ingredients'] = DB::table('recipeingredients')
                 ->where('recipe_id', '=', $recipe_id)
@@ -94,19 +84,31 @@ class RecipeController extends Controller
         $data['diet'] = $request->input('diet');
         $data['tool'] = $request->input('tool');
 
-        $ingred= DB::table('ingredients')->where('name',  $request->input('ingredient1') )->first();
-        $datalink['ingredient_id'] = $ingred->id;
+        $recipe_id = $recipe->insertGetId($data);
+        $iter = 0; 
 
-        $datalink['amount'] = $request->input('amount1');
+        foreach($request->input('ingredient') as $key => $val) {
 
-        if( $request->isMethod('post') ) {
-            
-            $recipe_id = $recipe->insertGetId($data);
-            $data['recipes'] = $this->recipe->all();
-            $data['filter'] = 'none';
+            $current_ingred = 'ingredient.' . $iter;
+            $current_amount = 'amount.' . $iter;
+
+            echo "<script type='text/javascript'>console.log('curr: ".$current_amount."');</script>";
+            echo "<script type='text/javascript'>console.log('value: ".$request->input($current_amount)."');</script>";
+
+            $ingred= DB::table('ingredients')->where('name',  $request->input($current_ingred) )->first();
+            $datalink['ingredient_id'] = $ingred->id;
+            $datalink['amount'] = $request->input($current_amount);
 
             $datalink['recipe_id'] = $recipe_id;
             $recipeingredient->insert($datalink);
+
+            $iter++;
+        }
+
+        if( $request->isMethod('post') ) {
+            
+            $data['recipes'] = $this->recipe->all();
+            $data['filter'] = 'none';
         }
 
         return view('recipes/index', $data);

@@ -55,14 +55,16 @@
 
         <h3>INGREDIENTS</h3>
 
-        <div class="form-row recipe-bar flex flex-row items-start">
-            <input type="text" name="amount1" class="form-input" placeholder="amount (ex. 2 Tbsp)" />
-            <select name="ingredient1" class="form-select ml-4">
-                @foreach( $ingredients as $ingredient)
-                    <option>{{ $ingredient->name }}</option>
-                @endforeach
-            </select>
-            <input type="button" class="btn btn-control ml-4" value="+" />
+        <div id="ingredients-outer">
+            <div id="ingred1" class="form-row recipe-bar flex flex-row items-start">
+                <input type="text" name="amount[]" class="form-input" placeholder="amount (ex. 2 Tbsp)" />
+                <select name="ingredient[]" class="form-select ml-4">
+                    @foreach( $ingredients as $ingredient)
+                        <option>{{ $ingredient->name }}</option>
+                    @endforeach
+                </select>
+                <input type="button" class="add-ingredients btn btn-control ml-4" value="+" />
+            </div>
         </div>
 
         <h3>COOKING INSTRUCTIONS</h3>
